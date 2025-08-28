@@ -1,7 +1,6 @@
 ARG TARGETARCH
 FROM alpine:latest
 
-ARG QEMU_ARCH
 ENV S6_KEEP_ENV=1
 
 RUN set -x && apk add --no-cache curl coreutils tzdata shadow \
