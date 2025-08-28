@@ -5,7 +5,7 @@ ENV S6_KEEP_ENV=1
 RUN set -x && apk add --no-cache curl coreutils tzdata shadow \
   && if [ "$TARGETARCH" = "amd64" ]; then \
       S6_ARCH="x86_64"; \
-    elif [ "$TARGETARCH" = "aarch64" ]; then \
+    elif [ "$TARGETARCH" = "arm64" ]; then \
       S6_ARCH="aarch64"; \
     else \
       echo "unsupported architecture"; \
