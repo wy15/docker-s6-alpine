@@ -5,7 +5,7 @@ ARG S6_OVERLAY_VERSION=1.22.1.0
 
 RUN set -x && apk add --no-cache curl coreutils tzdata shadow \
   && if [ "$TARGETARCH" = "amd64" ]; then \
-      S6_ARCH="x86_64"; \
+      S6_ARCH="amd64"; \
     elif [ "$TARGETARCH" = "arm64" ]; then \
       S6_ARCH="aarch64"; \
     fi \
