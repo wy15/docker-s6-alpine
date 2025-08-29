@@ -9,8 +9,8 @@ RUN set -x && apk add --no-cache curl coreutils tzdata shadow \
     elif [ "$TARGETARCH" = "arm64" ]; then \
       S6_ARCH="aarch64"; \
     fi \
-  && curl -L -s https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz | tar xvJf - -C / \
-  && curl -L -s https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-${S6_ARCH}.tar.xz | tar xvJf - -C / \
+  && curl -L -s https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz | tar xvpJf - -C / \
+  && curl -L -s https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-${S6_ARCH}.tar.xz | tar xvpJf - -C / \
   && groupmod -g 911 users && \
   useradd -u 911 -U -d /config -s /bin/false abc && \
   usermod -G users abc && \
