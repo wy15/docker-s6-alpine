@@ -1,6 +1,5 @@
 FROM alpine:latest
 ARG TARGETARCH
-ENV S6_KEEP_ENV=1
 ARG S6_OVERLAY_VERSION=3.2.1.0
 
 RUN set -x && apk add --no-cache curl coreutils tzdata shadow \
@@ -11,10 +10,7 @@ RUN set -x && apk add --no-cache curl coreutils tzdata shadow \
     fi \
   && curl -L -s https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz | tar xvpJf - -C / \
   && curl -L -s https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-${S6_ARCH}.tar.xz | tar xvpJf - -C / \
-  && groupmod -g 911 users && \
-  useradd -u 911 -U -d /config -s /bin/false abc && \
-  usermod -G users abc && \
-  mkdir -p /app /config /defaults && \
+  && mkdir -p /app /config /defaults && \
   apk del --no-cache curl \
   apk del --purge \
   rm -rf /tmp/*
